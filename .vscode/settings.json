@@ -1,0 +1,12 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8Args": [
+        "--max-line-length=120",
+        "--ignore=F405,E712,E501",
+        // "--ignore=E402,F841,E722,F401,E302,E305",
+    ],
+    "python.pythonPath": "/home/user/devspace/fastapi_keyphrase_extraction_app/.venv/bin/python3.8",
+    "python.formatting.provider": "yapf"
+}
