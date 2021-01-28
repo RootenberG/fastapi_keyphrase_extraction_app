@@ -10,13 +10,10 @@ from src.app.views import services
 from src.app.services.requests.aiohttp_singleton import SingletonAiohttp
 from .db import db
 
-
 # gets logging settings
-
 
 # setup loggers
 logging.config.fileConfig("logging.conf", disable_existing_loggers=False)
-
 
 logger = logging.getLogger(__name__)
 
@@ -39,8 +36,8 @@ async def on_shutdown():
 async def log_requests(request: Request, call_next):
     """Middleware that store all incoming requests"""
     idem = "".join(
-        random.choices(string.ascii_uppercase + string.digits, k=6)
-    )  # random id for each user that sends the request
+        random.choices(string.ascii_uppercase + string.digits,
+                       k=6))  # random id for each user that sends the request
     logger.info(f"rid={idem} start request path={request.url.path}")
     start_time = time.time()
 
@@ -53,6 +50,7 @@ async def log_requests(request: Request, call_next):
     )
 
     return response
+
 
 # endpoints
 app.include_router(services.router, prefix="/services", tags=["services"])

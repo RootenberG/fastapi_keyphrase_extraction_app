@@ -5,7 +5,6 @@ from socket import AF_INET
 
 logger = logging.getLogger(__name__)
 
-
 SIZE_POOL_AIOHTTP: int = 100
 
 
@@ -16,12 +15,11 @@ class SingletonAiohttp:
     def get_aiohttp_client(cls, auth=None) -> aiohttp.ClientSession:
         if cls.aiohttp_client is None:
             timeout = aiohttp.ClientTimeout(total=2)
-            connector = aiohttp.TCPConnector(
-                family=AF_INET, limit_per_host=SIZE_POOL_AIOHTTP
-            )
-            cls.aiohttp_client = aiohttp.ClientSession(
-                timeout=timeout, connector=connector, auth=auth
-            )
+            connector = aiohttp.TCPConnector(family=AF_INET,
+                                             limit_per_host=SIZE_POOL_AIOHTTP)
+            cls.aiohttp_client = aiohttp.ClientSession(timeout=timeout,
+                                                       connector=connector,
+                                                       auth=auth)
 
         return cls.aiohttp_client
 

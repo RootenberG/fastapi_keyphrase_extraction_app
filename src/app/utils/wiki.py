@@ -10,12 +10,15 @@ NO_ARTICLE_MESSAGES = {
     "de": "Diese Seite existiert nicht",
 }
 
+
 async def wiki_has_lemma(lemma: str, language: str = "en") -> bool:
     if language not in NO_ARTICLE_MESSAGES:
-        raise ValueError(f"language must be one of {NO_ARTICLE_MESSAGES.keys()}")
+        raise ValueError(
+            f"language must be one of {NO_ARTICLE_MESSAGES.keys()}")
     url = f"https://{language}.wikipedia.org/wiki/{urllib.parse.quote(lemma)}"
     try:
-        response = NO_ARTICLE_MESSAGES[language] not in str(await SingletonAiohttp.get(url))
+        response = NO_ARTICLE_MESSAGES[language] not in str(
+            await SingletonAiohttp.get(url))
     except Exception as e:
         logger.warning(f"{e} exception occured")
         response = False

@@ -20,6 +20,7 @@ async def text_anaizer_view(request: Request, text: str):
     await create_words(text_id, keyphrases_with_rates)
     return JSONResponse({"text_id": text_id})
 
+
 @router.get("/GetTopPhrazes")
 async def get_top_phrases_view(request: Request):
     phrases = await get_top_phrases()
