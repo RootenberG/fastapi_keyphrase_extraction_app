@@ -3,6 +3,6 @@ gino==1.0.1
 gino-starlette==0.1.1
 alembic==1.4.3
 aiohttp==3.7.3
-rake-nltk==1.0.4
 wikipedia==1.4.0
 uvicorn==0.13.3
+psycopg2==2.8.6 
