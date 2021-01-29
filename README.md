@@ -6,7 +6,9 @@
 ```docker-compose up --build```
 
 ### Make migrations
+```docker-compose run web alembic revision --autogenerate -m "init" ```
 ```docker-compose run web alembic upgrade head```
+
 
 
 ## Usage
